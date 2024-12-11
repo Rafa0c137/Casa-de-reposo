@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa de reposo - Administración</title>
+</head>
+<body>
+    <header>
+        <h1>Casa de reposo - Administración de Pacientes</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'listar_pacientes' %}">Pacientes</a></li>
+                    {% if user.is_superuser %}
+                    <li><a href="{% url 'registrar_paciente' %}">Registrar pacientes</a></li>
+                {% endif %}
+
+                    {% if user.is_superuser %}
+                        <li><a href="{% url 'registro_usuario' %}">Registrar Usuario</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Casa de reposo</p>
+    </footer>
+</body>
+</html>

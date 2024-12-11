@@ -1,0 +1,12 @@
+<!-- core/templates/listar_pacientes.html -->
+
+<ul>
+    {% for paciente in pacientes %}
+        <li>
+            <a href="{% url 'detalle_paciente' paciente_id=paciente.id %}">Detalles de {{ paciente.nombre }}</a>
+        </li>
+    {% empty %}
+        <li>No hay pacientes registrados.</li>
+    {% endfor %}
+</ul>
+

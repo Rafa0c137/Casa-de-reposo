@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Paciente</title>
+</head>
+<body>
+    <h1>Detalle del Paciente</h1>
+    <p>Nombre: {{ paciente.nombre }}</p>
+    <p>Edad: {{ paciente.edad }}</p>
+    <p>ID: {{ paciente.id }}</p>
+
+    <h2>Código QR</h2>
+    <img src="{{ qr_code_path }}" alt="Código QR del paciente">
+    <a href="{% url 'descargar_qr' paciente.id %}">Descargar QR</a>
+</body>
+</html>
